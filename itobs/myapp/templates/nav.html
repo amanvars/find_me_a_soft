@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<nav class="navbar navbar-dark navbar-full" style="background-color: #6a1b9a;">
+
+
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar" style="background-color: #fff;"></span>
+        <span class="icon-bar" style="background-color: #fff;"></span>
+        <span class="icon-bar" style="background-color: #fff;"></span>
+      </button>
+
+         <a class="navbar-brand" href="{% url 'index' %}">
+   <img src="{% static 'img/robot.png' %}" width="50" height="50" class="d-inline-block align-top" alt="Home" style="margin-top: -6%; margin-right: -2%">
+     &nbsp; &nbsp;Find_me_a_soft
+  </a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+
+      <ul class="nav navbar-nav navbar-right">
+
+      <li><a style="color: #fff;"><span class="glyphicon glyphicon-user"></span> Demo </a></li>
+
+      <li><a style="color: #fff;" href="{% url 'dev' %}"><span class="glyphicon glyphicon glyphicon-wrench"></span> Developer </a></li>
+    </ul>
+
+    </div>
+  </div>
+
+</nav>

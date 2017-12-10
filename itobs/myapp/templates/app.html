@@ -1,0 +1,139 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+  <head>
+    <title>finderBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    {% include 'nav.html' %}
+
+    <div class="container" >
+
+      <div class="jumbotron" style="height:500px; background-color: #fff;">
+        <h1 class="jumbotron-heading text-xs-center" style="margin-top:-4%;">finderBuddy</h1>
+        <p class="lead text-xs-center">
+          <i>Your personal "Servitor" </i>
+        </p>
+
+        <hr class="my-2">
+
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-group chat-log js-chat-log">
+            </ul>
+          </div>
+            <div class="col-md-6 ">
+            <div class="input-group input-group-lg ">
+              <input type="text" class="form-control js-text" placeholder="Query...."/>
+              <span class="input-group-btn">
+                <button class="btn btn-primary js-say">Submit</button>
+              </span>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+<script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/js.cookie.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script>
+
+      var csrftoken = Cookies.get('csrftoken');
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+
+      var $chatlog = $('.js-chat-log');
+      var $input = $('.js-text');
+      var $sayButton = $('.js-say');
+
+      function createRow(text) {
+        var $row = $('<li class="list-group-item" style="border-radius:20px; text-align:right;margin-bottom:2px;"></li>');
+
+        $row.text(text);
+        $chatlog.append($row);
+      }
+
+       function createBotRow(text) {
+        var $row = $('<li class="list-group-item" style="border-radius:20px; text-align:left; background-color:#81D4FA; margin-bottom:2px"></li>');
+
+        $row.text(text);
+        $chatlog.append($row);
+      }
+
+      function submitInput() {
+        var inputData = {
+          'text': $input.val()
+
+        }
+          input_chat = JSON.stringify(inputData.text)
+          //input_chat = input_chat[1:-1]
+          //alert(input_chat)
+
+        // Display the user's input on the web page
+        createRow(inputData.text);
+
+        var $submit = $.ajax({
+
+          url: "./checkinput/",
+          data: {'ipt':input_chat},
+
+          contentType: 'application/json'
+        });
+
+
+
+        $submit.done(function(da) {
+            //createRow(statement.str(text));
+            createBotRow(da.ans);
+            //window.alert(da.ans);
+            // Clear the input field
+            $input.val('');
+
+            // Scroll to the bottom of the chat interface
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        });
+
+
+        $submit.fail(function() {
+          // TODO: Handle errors
+        });
+      }
+
+      $sayButton.click(function() {
+        submitInput();
+      });
+
+      $input.keydown(function(event) {
+        // Submit the input when the enter button is pressed
+        if (event.keyCode == 13) {
+          submitInput();
+        }
+      });
+    </script>
+
+  <div class="outer" style="position: relative; height: 24px;">
+    <img src="/static/img/crobot.png" style="position: absolute; right: 0; bottom: 0;">
+ </div>
+  
+  </body>
+</html>

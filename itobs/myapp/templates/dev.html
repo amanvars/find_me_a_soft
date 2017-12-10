@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!doctype html>
+
+  <head>
+    <title>finderBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+     <style>
+  .container {
+      padding: 80px 120px;
+  }
+  .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+  }
+  .person:hover {
+      border-color: #f1f1f1;
+  }
+  </style>
+
+  </head>
+  <body>
+
+    {% include 'nav.html' %}
+
+    <div class="container text-center" style="margin-top:-4% ;">
+
+        <div class="row">
+    <div class="col-sm-12">
+      <p class="text-center" style="font-size: large"><strong>Aman Varshney</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="/static/img/aman.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>Student</p>
+        <p>B.Tech Computer 4th Year</p>
+
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+<div class="outer" style="position: relative; height:auto;">
+    <img src="/static/img/crobot.png" style="position: absolute; right: 0; bottom: 0;">
+ </div>
+  </body>
+</html>

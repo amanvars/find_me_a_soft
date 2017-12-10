@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!doctype html>
+
+  <head>
+    <title>finderBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    {% include 'nav.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="text-align: center; margin-top:10% ;">
+                <h2>Services Offered</h2>
+                  <!-- Trigger the modal with a button -->
+                  <img src="/static/img/services.jpg" class="img-circle person" width="200" height="200" alt="Random Name" data-toggle="modal" data-target="#myModal1">
+
+            </div>
+
+            <div class="col-md-6" style="text-align: center;margin-top:10% ;">
+
+                 <h2>Instructions</h2>
+                  <!-- Trigger the modal with a button -->
+                <img src="/static/img/inst.jpg" class="img-circle person" width="200" height="200" alt="Random Name" data-toggle="modal" data-target="#myModal2">
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Services</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. It scrouges over the interne to find the best deals of the supplies you intend to order. </p>
+          <p>2. It alerts you over the items running short in your inventory. </p>
+          <p>3. It helps you to place order of any supply that you need, thus saving you the effort of going through a long clearance procedure. </p>
+          <p>4. It helps you to review your past orders for reference. </p>
+          <p>5. It also helps you to cancel the orders placed by you, if they have not been delivered yet. </p>
+          <p>So how can we <a href="{% url 'app' %}">serve </a>you. </p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Instructions</h4>
+
+        </div>
+        <div class="modal-body">
+          <p>1. To place an Order, please type:  #place_order /product_name/quantity/color(if any)</p>
+            <p>2. To change an Order, please type:  #change_order /order_id/quantity(to change)</p>
+            <p>3. To review an Order, please type:  #review_order /order_id</p>
+            <p>4. To cancel an Order, please type:  #cancel_order /order_id</p>
+            <p>5. To know your previous Order, please type:  #previous_order</p>
+            <p>6. To check what all items are about to finish, please type: #check</p>
+            <p>7. For help, please type:  #help</p>
+            <p>8. Other than this,you can also just type in the keywords of your query</p>
+            <p>9. like want/need/find/reorder along with the order id and product name</p>
+            <p>10. pattern is sensitive and use of small case letters is recommended</p>
+            <p> Hope this helped\nIn case of further queries,please feel free to contact the developers</p>
+            <p> <strong>Anushka Chawla (anushkachawla@zhcet.ac.in) &nbsp; &nbsp;
+                Aman Varshney (amanvars@gmail.com)</strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="outer" style="position: relative; height: 150px;">
+    <img src="/static/img/crobot.png" style="position: absolute; right: 0; bottom: 0;">
+ </div>
+  </body>
+</html>

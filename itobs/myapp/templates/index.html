@@ -1,0 +1,386 @@
+{% load staticfiles %}
+<!doctype html>
+
+  <head>
+    <title>find_me_a_soft</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+
+        $('document').ready(function(){
+	$('input[type="text"], input[type="email"], textarea').focus(function(){
+		var background = $(this).attr('id');
+		$('#' + background + '-form').addClass('formgroup-active');
+		$('#' + background + '-form').removeClass('formgroup-error');
+	});
+	$('input[type="text"], input[type="email"], textarea').blur(function(){
+		var background = $(this).attr('id');
+		$('#' + background + '-form').removeClass('formgroup-active');
+	});
+
+function errorfield(field){
+	$(field).addClass('formgroup-error');
+	console.log(field);
+}
+
+$("#waterform").submit(function() {
+	var stopsubmit = false;
+
+if($('#name').val() == "") {
+	errorfield('#name-form');
+	stopsubmit=true;
+}
+if($('#email').val() == "") {
+	errorfield('#email-form');
+	stopsubmit=true;
+}
+  if(stopsubmit) return false;
+});
+
+});
+
+    </script>
+
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+
+body, html{
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: 'Sniglet', cursive;
+}
+h1{
+	font-weight: normal;
+	font-size: 4em;
+	font-family: 'Raleway', sans-serif;
+	margin: 0 auto;
+	margin-top: 30px;
+	width: 500px;
+	color: #F90;
+	text-align: center;
+
+}
+
+/* Animation webkit */
+@-webkit-keyframes myfirst
+{
+	0% {margin-left: -235px}
+	90% {margin-left: 100%;}
+	100% {margin-left: 100%;}
+}
+
+/* Animation */
+@keyframes myfirst
+{
+	0% {margin-left: -235px}
+	70% {margin-left: 100%;}
+	100% {margin-left: 100%;}
+}
+
+.fish{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/fish.png');
+	width: 235px;
+	height: 104px;
+	margin-left: -235px;
+	position: absolute;
+	animation: myfirst 24s;
+	-webkit-animation: myfirst 24s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+
+#fish{
+	top: 120px;
+}
+
+#fish2{
+	top: 260px;
+	animation-delay: 12s;
+	-webkit-animation-delay: 12s;
+}
+
+
+header{
+	height: 160px;
+	background: url('http://www.geertjanhendriks.nl/codepen/form/golf.png') repeat-x bottom;
+}
+
+#form{
+	height: 100%;
+	background-color: #98d4f3;
+	overflow: hidden;
+	position: relative;
+
+}
+form{
+	margin: 0 auto;
+	width: 500px;
+	padding-top: 40px;
+	color: white;
+	position: relative;
+
+
+}
+label, input, textarea{
+	display: block;
+}
+input, textarea{
+	width: 500px;
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	padding: 10px;
+	font-family: 'Sniglet', cursive;
+	font-size: 1em;
+	color: #676767;
+	transition: border 0.5s;
+	-webkit-transition: border 0.5s;
+	-moz-transition: border 0.5s;
+	-o-transition: border 0.5s;
+	border: solid 3px #98d4f3;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+
+}
+input:focus, textarea:focus{
+	border: solid 3px #77bde0;
+}
+
+textarea{
+	height: 100px;
+	resize: none;
+	overflow: auto;
+}
+input[type="submit"]{
+	background-color: #F90;
+	color: white;
+	height: 50px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-size: 1.29em;
+	font-family: 'Sniglet', cursive;
+	-webkit-transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-o-transition: background-color 0.5s;
+	transition: background-color 0.5s;
+}
+input[type="submit"]:hover{
+	background-color: #e58f0e;
+
+}
+label{
+	font-size: 1.5em;
+	margin-top: 20px;
+	padding-left: 20px;
+}
+.formgroup, .formgroup-active, .formgroup-error{
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 10.5%;
+	transition: background-image 0.7s;
+	-webkit-transition: background-image 0.7s;
+	-moz-transition: background-image 0.7s;
+	-o-transition: background-image 0.7s;
+	width: 566px;
+	padding-top: 2px;
+}
+
+.formgroup{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif');
+}
+.formgroup-active{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo.png');
+}
+.formgroup-error{
+	background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
+	color: red;
+}
+    </style>
+  </head>
+  <body>
+
+    {% include 'nav.html' %}
+
+    <div class="container">
+
+
+
+        <header>
+	<h1 style="text-align: center; margin-top: -1%">find_me_a_soft</h1>
+  <h3 style="text-align: center;"><i>Your personal "Servitor" </i></h3>
+</header>
+
+<div id="form">
+
+<div class="fish" id="fish"></div>
+<div class="fish" id="fish2"></div>
+
+<form id="waterform">
+
+<div class="formgroup" id="name-form">
+    <label>Application name</label>
+    <input type="text" class="js-text"  placeholder="Query...." />
+</div>
+
+<div class="formgroup" id="ver-form">
+
+    <input type="text" class="js-text-ver"  placeholder="Version if any...." />
+</div>
+
+
+<div class="formgroup" id="email-form" class="ans">
+    <ul class="list-group chat-log js-chat-log">
+            </ul>
+</div>
+<!--
+<div class="formgroup" id="message-form">
+    <label for="message">Your message</label>
+    <textarea id="message" name="message"></textarea>
+</div> --->
+
+	<input type="button" class="sub" value="Submit" />
+</form>
+</div>
+        </div>
+<script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/js.cookie.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+          <script>
+
+      var csrftoken = Cookies.get('csrftoken');
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+
+          var $chatlog = $('.js-chat-log');
+
+    var $input = $('.js-text');
+    var $input_ver = $('.js-text-ver');
+      var $sayButton = $('.sub');
+
+      function createRow(text) {
+        var $row = $('<li class="list-group-item" style="border-radius:20px; background-color:#6D4C41;text-align:right;margin-bottom:2px;"></li>');
+
+        $row.text(text);
+        $chatlog.append($row);
+      }
+
+       function createBotRow(text1) {
+        var $row = $('<li class="list-group-item" style="border-radius:20px; text-align:left; background-color:#6D4C41; margin-bottom:2px"></li>');
+
+        $row.text(text1);
+        $chatlog.append($row);
+      }
+
+      function submitInput() {
+        var inputData = {
+          'text': $input.val(),
+            'version':$input_ver.val()
+
+        }
+          input_chat = JSON.stringify(inputData.text)
+          input_ver = JSON.stringify(inputData.version)
+          //input_chat = input_chat[1:-1]
+         // window.alert(input_chat);
+          //window.alert("aman");
+        // Display the user's input on the web page
+        //createRow(inputData.text);
+
+        var $submit = $.ajax({
+
+          url: "./get_info/",
+          data: {'ipt':input_chat},
+
+          contentType: 'application/json'
+        });
+
+
+
+        $submit.done(function(da) {
+            //createRow(statement.str(text));
+            createBotRow(da.name);
+
+            createBotRow(da.comp);
+
+            createBotRow("Category: "+ da.tag);
+            //createBotRow(input_ver);
+
+
+            createBotRow(da.text);
+
+            var $row = $('<li class="list-group-item" style="border-radius:20px;background-color:#6D4C41; text-align:left; margin-bottom:2px"></li>');
+
+        $row.text(" If the version is no longer supported by the vendor and if more than 5 versions are available, then it is obsolete" );
+                  //alert(value.date + ' ' + value.name + '<br />')
+                $chatlog.append($row);
+
+            $i=1;
+            $.each(da.ver, function(key, value) {
+
+                  var $row = $('<li class="list-group-item" style="border-radius:20px;background-color:#6D4C41; text-align:left; margin-bottom:2px"></li>');
+
+        $row.text( $i+'.  ' + value.date + ' ' + value.name );
+                  //alert(value.date + ' ' + value.name + '<br />')
+                $i=$i+1;
+                $chatlog.append($row);
+
+            });
+
+            //alert(rows);
+            //createBotRow(da.ver);
+            //$chatlog.append($rows);
+            //createBotRow($rows);
+
+            createBotRow("Related Softwares: "+da.reld);
+            //window.alert(da.text);
+            // Clear the input field
+            $input.val('');
+
+            // Scroll to the bottom of the chat interface
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        });
+
+
+        $submit.fail(function() {
+          // TODO: Handle errors
+        });
+      }
+
+      $sayButton.click(function() {
+        submitInput();
+      });
+
+      $input.keydown(function(event) {
+        // Submit the input when the enter button is pressed
+        if (event.keyCode == 13) {
+          submitInput();
+        }
+      });
+    </script>
+
+<div class="outer" style="position: relative; height: 24px;">
+    <img src="/static/img/crobot.png" style="position: absolute; right: 0; bottom: 0;">
+ </div>
+  </body>
+</html>
